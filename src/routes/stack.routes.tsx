@@ -8,26 +8,21 @@ import Home from '../screens/home';
 
 export default function StackRoutes() {
   return (
-    <Navigator>
+    <Navigator
+      screenOptions={{
+        headerTitle: () => (
+          <Image source={require("../images/rchlo-logo.png")} />
+        ),
+        headerTitleAlign: 'center'
+      }}
+    >
       <Screen 
         name='Login'
         component={Login}
-        options={{
-          headerTitle: () => (
-            <Image source={require("../images/rchlo-logo.png")} />
-          ),
-          headerTitleAlign: 'center'
-        }}
       />
       <Screen 
         name='Home'
         component={Home}
-        options={{
-          headerTitle: () => (
-            <Image source={require("../images/rchlo-logo.png")} />
-          ),
-          headerTitleAlign: 'center'
-        }}
       />      
     </Navigator>
   )
