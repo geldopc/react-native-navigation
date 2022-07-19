@@ -12,10 +12,10 @@ export default function StackRoutes() {
       name='Login'
       component={Login}
       />
-
       <Screen 
       name='Home'
-      component={Home}/>
+      component={Home}
+      />      
     </Navigator>
   )
 }

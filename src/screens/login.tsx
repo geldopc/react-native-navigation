@@ -1,27 +1,48 @@
 import React from "react";
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View, Button, TextInput } from 'react-native';
+import { useNavigation } from '@react-navigation/native'
 
 export default function Login() {
+  const navigation = useNavigation();
+  function changeScreen(){
+    navigation.navigate('Home');
+  }
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Login page</Text>
-      <Button 
-        title="Ir pra tela de HOME"
+    <View style={styles.view}>
+      <TextInput style={styles.input}
+        placeholder="username"
       />
+      <TextInput style={styles.input}
+        placeholder="password"
+        secureTextEntry={true}
+      />
+
+      <View style={styles.buttonView}>
+        <Button
+          color={'black'}
+          title="LOGIN"
+          onPress={changeScreen}
+        />
+      </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
+  view: {
     flex: 1,
-    backgroundColor: 'red',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  text: {
-    color: 'white',
-    fontWeight: '800',
-    fontSize: 30
+  input: {
+    width: "70%",
+    height: 40,
+    marginBottom: 10,
+    borderWidth: 1,
+    padding: 10
+  },
+  buttonView:{
+    width: '40%'
   }
 });
