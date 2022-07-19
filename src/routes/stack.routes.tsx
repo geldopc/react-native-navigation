@@ -15,7 +15,8 @@ export default function StackRoutes() {
         options={{
           headerTitle: () => (
             <Image source={require("../images/rchlo-logo.png")} />
-          )
+          ),
+          headerTitleAlign: 'center'
         }}
       />
       <Screen 
@@ -24,7 +25,8 @@ export default function StackRoutes() {
         options={{
           headerTitle: () => (
             <Image source={require("../images/rchlo-logo.png")} />
-          )
+          ),
+          headerTitleAlign: 'center'
         }}
       />      
     </Navigator>
