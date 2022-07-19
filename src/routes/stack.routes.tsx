@@ -1,4 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { Image } from 'react-native';
 
 const { Screen, Navigator } = createNativeStackNavigator();
 
@@ -9,12 +10,22 @@ export default function StackRoutes() {
   return (
     <Navigator>
       <Screen 
-      name='Login'
-      component={Login}
+        name='Login'
+        component={Login}
+        options={{
+          headerTitle: () => (
+            <Image source={require("../images/rchlo-logo.png")} />
+          )
+        }}
       />
       <Screen 
-      name='Home'
-      component={Home}
+        name='Home'
+        component={Home}
+        options={{
+          headerTitle: () => (
+            <Image source={require("../images/rchlo-logo.png")} />
+          )
+        }}
       />      
     </Navigator>
   )
