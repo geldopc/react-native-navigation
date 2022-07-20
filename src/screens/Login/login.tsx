@@ -1,4 +1,5 @@
 import React from "react";
+import * as S from './styles'
 import { StyleSheet, TouchableOpacity, Text, View, Button, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 
@@ -9,40 +10,22 @@ export default function Login() {
   }
 
   return (
-    <View style={styles.view}>
-      <TextInput style={styles.input}
+    <S.ViewContainer>
+      <S.TextInput
         placeholder="username"
       />
-      <TextInput style={styles.input}
+      <S.TextInput
         placeholder="password"
         secureTextEntry={true}
       />
 
-      <View style={styles.buttonView}>
+      <S.ButtonView>
         <Button
           color={'black'}
           title="LOGIN"
           onPress={changeScreen}
         />
-      </View>
-    </View>
+      </S.ButtonView>
+    </S.ViewContainer>
   )
 }
-
-const styles = StyleSheet.create({
-  view: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  input: {
-    width: "70%",
-    height: 40,
-    marginBottom: 10,
-    borderWidth: 1,
-    padding: 10
-  },
-  buttonView:{
-    width: '40%'
-  }
-});
