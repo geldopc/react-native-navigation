@@ -3,8 +3,8 @@ import { Image } from 'react-native';
 
 const { Screen, Navigator } = createNativeStackNavigator();
 
-import Login from '../screens/login';
-import Home from '../screens/home';
+import Login from '../screens/Login/login';
+import Home from '../screens/Home/home';
 
 export default function StackRoutes() {
   return (
