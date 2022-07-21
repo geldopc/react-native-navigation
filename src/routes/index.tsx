@@ -1,11 +1,15 @@
 import { NavigationContainer } from '@react-navigation/native'
-
 import StackRoutes from './stack.routes'
+import { UserContext, UserProvider } from '../contexts/contexts'
+//import { useContext, useState } from 'react'
 
 export default function Routes(){
+  
   return(
-    <NavigationContainer>
-      <StackRoutes />
-    </NavigationContainer>
+    <UserProvider>
+      <NavigationContainer>
+        <StackRoutes />
+      </NavigationContainer>
+    </UserProvider>
   )
 }

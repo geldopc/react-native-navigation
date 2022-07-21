@@ -1,7 +1,8 @@
-//import React from "react";
+import React, { useContext } from "react";
 import * as S from './styles'
 import { View, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { UserContext } from "../../contexts/contexts";
 
 export default function Home() {
   const navigation = useNavigation();
@@ -9,9 +10,13 @@ export default function Home() {
     navigation.navigate('Login');
   }
 
+  let { user, password } = useContext(UserContext)
+  console.log("HOME", user, password)
+
   return (
     <S.ViewContainer>
-      <S.Text>Bem vindo!</S.Text>
+      <S.Text>Bem vindo!{user}</S.Text>
+      <S.Text>Sua senha é {password}</S.Text>
       <View>
         <Button
           color={'black'}
