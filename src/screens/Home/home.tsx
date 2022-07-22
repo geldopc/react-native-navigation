@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import * as S from './styles'
 import { View, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { UserContext } from "../../contexts/contexts";
+import { AuthContext } from "../../contexts/auth";
 
 export default function Home() {
   const navigation = useNavigation();
@@ -10,13 +10,12 @@ export default function Home() {
     navigation.navigate('Login');
   }
 
-  let { user, password } = useContext(UserContext)
-  console.log("HOME", user, password)
-
+  const { user } = useContext(AuthContext)
+    
   return (
     <S.ViewContainer>
-      <S.Text>Bem vindo!{user}</S.Text>
-      <S.Text>Sua senha é {password}</S.Text>
+      <S.Text>Bem vindo {user.username}!</S.Text>
+      <S.Text>Sua senha é {user.password}</S.Text>
       <View>
         <Button
           color={'black'}
