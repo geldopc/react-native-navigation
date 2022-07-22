@@ -1,10 +1,9 @@
 import React, { useContext, useState } from "react";
 import * as S from './styles'
-import { Button } from 'react-native';
+import { Button,Text} from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 
-import { UserContext } from "../../contexts/contexts";
-import { SafeAreaInsetsContext } from "react-native-safe-area-context";
+import { AuthContext } from "../../contexts/auth";
 
 export default function Login() {
   const navigation = useNavigation();
@@ -12,24 +11,33 @@ export default function Login() {
     navigation.navigate('Home');
   }
 
-  let { user, password } = useContext(UserContext)
-    
-  const [userName, setUserName] = useState('x')
-  console.log("Username", userName)
-
-  user = userName
+  const [userName, setUserName] = useState('')
   
-  const [pass, setPass] = useState('y')
+  function setUser (text: string) {
+    setUserName(text);
+  }
+  
+  const [password, setPassWord] = useState('')
 
-  password = pass
+  function setPass (text: string){
+    setPassWord(text)
+  }
 
-  console.log("LOGIN", user, password)
+  console.log("Usuário senha", userName, password)
+
+  const { signIn } = useContext(AuthContext)
+
+  function handleLogin(){
+    signIn(userName,password)
+    changeScreen()
+  }
 
   return (
     <S.ViewContainer>
+      <Text>nome</Text>
       <S.TextInput
         placeholder="username"
-        onChangeText={(text: string) => setUserName(text)}
+        onChangeText={(text: string) => setUser(text)}
 
       />
       <S.TextInput
@@ -42,7 +50,7 @@ export default function Login() {
         <Button
           color={'black'}
           title="LOGIN"
-          onPress={changeScreen}
+          onPress={handleLogin}
         />
       </S.ButtonView>
     </S.ViewContainer>
