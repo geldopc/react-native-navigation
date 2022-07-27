@@ -1,51 +1,46 @@
 import React, { useContext, useState } from "react";
 import * as S from './styles'
-import { Button,Text} from 'react-native';
+import { Button} from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 
 import { AuthContext } from "../../contexts/auth";
 
+import TodoList from "../../TodoList/TodoList";
+
 export default function Login() {
-  const navigation = useNavigation();
-  function changeScreen(){
-    navigation.navigate('Home');
-  }
-
+  
   const [userName, setUserName] = useState('')
-  
-  function setUser (text: string) {
-    setUserName(text);
-  }
-  
   const [password, setPassWord] = useState('')
-
-  function setPass (text: string){
-    setPassWord(text)
-  }
-
-  console.log("Usuário senha", userName, password)
-
+  const navigation = useNavigation();
   const { signIn } = useContext(AuthContext)
 
+  function setUser (text: string) { setUserName(text) }
+
+  function setPass (text: string) { setPassWord(text) }
+
+  function changeScreen() { navigation.navigate('Home') }
+
   function handleLogin(){
-    signIn(userName,password)
-    changeScreen()
+    signIn(userName,password);
+    changeScreen();
   }
+
+  console.log("Usuário senha", userName, password)  
 
   return (
     <S.ViewContainer>
-      <Text>nome</Text>
+      
+      <TodoList />
+
       <S.TextInput
         placeholder="username"
         onChangeText={(text: string) => setUser(text)}
-
       />
       <S.TextInput
         placeholder="password"
         secureTextEntry={true}
         onChangeText={(text: string) => setPass(text)}
       />
-
       <S.ButtonView>
         <Button
           color={'black'}

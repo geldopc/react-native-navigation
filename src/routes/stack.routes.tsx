@@ -14,16 +14,15 @@ export default function StackRoutes() {
           <Image source={require("../images/rchlo-logo.png")} />
         ),
         headerTitleAlign: 'center'
-      }}
-    >
-      <Screen 
-        name='Login'
-        component={Login}
-      />
-      <Screen 
-        name='Home'
-        component={Home}
-      />      
+      }}>
+        <Screen 
+          name='Login'
+          component={Login}
+        />
+        <Screen 
+          name='Home'
+          component={Home}
+        />      
     </Navigator>
   )
 }
