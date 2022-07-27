@@ -5,12 +5,15 @@ import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from "../../contexts/auth";
 
 export default function Home() {
+  
+  const { user } = useContext(AuthContext)
   const navigation = useNavigation();
+
   function changeScreen(){
     navigation.navigate('Login');
   }
 
-  const { user } = useContext(AuthContext)
+  
     
   return (
     <S.ViewContainer>

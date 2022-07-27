@@ -1,13 +1,8 @@
-import React,{ createContext, Dispatch, ReactNode, SetStateAction, useContext, useState  } from "react";
+import React,{ createContext, ReactNode, useState  } from "react";
 
 interface UserProviderType {
   children: ReactNode;
 }
-
-export const authContext = createContext({
-  username: '',
-  setUserNaime: (text:string) => {}
-})
 
 export const AuthContext = createContext({} as any)
 
@@ -22,7 +17,7 @@ function AuthProvider({children}: UserProviderType){
   }
 
   return(
-    <AuthContext.Provider value={{nome: "", signIn, user}}>
+    <AuthContext.Provider value={{signIn, user}}>
       {children}
     </AuthContext.Provider>
   )
