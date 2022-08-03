@@ -3,17 +3,18 @@ import * as S from './styles'
 import { View, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from "../../contexts/auth";
+import { useDispatch } from "react-redux";
 
 export default function Home() {
   
   const { user } = useContext(AuthContext)
   const navigation = useNavigation();
 
+  const dispatch = useDispatch();
+
   function changeScreen(){
     navigation.navigate('Login');
   }
-
-  
     
   return (
     <S.ViewContainer>

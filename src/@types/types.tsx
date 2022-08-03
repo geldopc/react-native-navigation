@@ -1,4 +1,4 @@
 export default interface Iuser {
-  username: string;
-  password: string;
+  username: string | undefined;
+  password: string | undefined;
 }
