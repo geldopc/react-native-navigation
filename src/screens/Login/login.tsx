@@ -7,12 +7,17 @@ import { AuthContext } from "../../contexts/auth";
 
 import TodoList from "../../TodoList/TodoList";
 
+import { useDispatch } from "react-redux";
+import { Actions as ActionsAuth } from "../../reducers/auth"
+
 export default function Login() {
   
   const [userName, setUserName] = useState('')
   const [password, setPassWord] = useState('')
   const navigation = useNavigation();
   const { signIn } = useContext(AuthContext)
+
+  const dispatch = useDispatch();
 
   function setUser (text: string) { setUserName(text) }
 
