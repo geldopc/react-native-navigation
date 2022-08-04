@@ -1,13 +1,13 @@
 import { combineReducers } from "redux";
 
 import todos from "./todos";
-import { reducer } from "./auth";
+import { reducer as AuthReducer } from "./auth";
 
 const rootReducer = combineReducers({
-	todos,
-	reducer,
-})
+  todos,
+  AuthReducer,
+});
 
-export type RootState = ReturnType<typeof rootReducer>
+export type RootState = ReturnType<typeof rootReducer>;
 
-export default {rootReducer}
+export default { rootReducer };

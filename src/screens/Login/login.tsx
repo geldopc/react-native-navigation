@@ -1,40 +1,53 @@
-import React, { useContext, useState } from "react";
-import * as S from './styles'
-import { Button} from 'react-native';
-import { useNavigation } from '@react-navigation/native'
+import React, { useContext, useEffect, useState } from "react";
+import * as S from "./styles";
+import { Button } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import { AuthContext } from "../../contexts/auth";
 
 import TodoList from "../../TodoList/TodoList";
 
-import { useDispatch } from "react-redux";
-import { Actions as ActionsAuth } from "../../reducers/auth"
+import { useDispatch, useSelector } from "react-redux";
+import { Actions as ActionsAuth } from "../../reducers/auth";
+import { RootState } from "../../reducers";
 
 export default function Login() {
-  
-  const [userName, setUserName] = useState('')
-  const [password, setPassWord] = useState('')
+  const [userName, setUserName] = useState("");
+  const [password, setPassWord] = useState("");
   const navigation = useNavigation();
-  const { signIn } = useContext(AuthContext)
-
   const dispatch = useDispatch();
 
-  function setUser (text: string) { setUserName(text) }
+  const { signIn } = useContext(AuthContext);
 
-  function setPass (text: string) { setPassWord(text) }
+  const { user } = useSelector((state: RootState) => state.AuthReducer);
 
-  function changeScreen() { navigation.navigate('Home') }
-
-  function handleLogin(){
-    signIn(userName,password);
-    changeScreen();
+  function setUser(text: string) {
+    setUserName(text);
   }
 
-  console.log("Usuário senha", userName, password)  
+  function setPass(text: string) {
+    setPassWord(text);
+  }
+
+  function changeScreen() {
+    navigation.navigate("Home");
+  }
+
+  function handleLogin() {
+    dispatch(ActionsAuth.login({ username: userName, password }));
+    signIn(userName, password);
+  }
+
+  useEffect(() => {
+    if ((user?.username, user?.password)) {
+      changeScreen();
+    }
+  }, [user?.username, user?.password]);
+
+  console.log("Usuário senha", userName, password);
 
   return (
     <S.ViewContainer>
-      
       <TodoList />
 
       <S.TextInput
@@ -47,12 +60,8 @@ export default function Login() {
         onChangeText={(text: string) => setPass(text)}
       />
       <S.ButtonView>
-        <Button
-          color={'black'}
-          title="LOGIN"
-          onPress={handleLogin}
-        />
+        <Button color={"black"} title="LOGIN" onPress={handleLogin} />
       </S.ButtonView>
     </S.ViewContainer>
-  )
+  );
 }

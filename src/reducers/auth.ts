@@ -1,8 +1,8 @@
-import Iuser from "../@types/types"
+import Iuser from "../@types/types";
 
 export enum ActionTypes {
-  LOGIN = '',
-  LOGOFF = ''
+  LOGIN = "LOGIN",
+  LOGOFF = "LOGOFF",
 }
 
 export interface AuthState {
@@ -11,10 +11,10 @@ export interface AuthState {
 
 const INITIAL_STATE: AuthState = {
   user: {
-    username: '',
-    password: ''
+    username: "",
+    password: "",
   },
-}
+};
 
 export interface AuthPayload {
   readonly username?: string;
@@ -37,27 +37,31 @@ export const Actions = {
   logoff: (): AuthAction => ({
     type: ActionTypes.LOGOFF,
   }),
-}
+};
 
-export const reducer = (state = INITIAL_STATE, action: AuthAction): AuthState => {
+export const reducer = (
+  state = INITIAL_STATE,
+  action: AuthAction
+): AuthState => {
   switch (action.type) {
-    case ActionTypes.LOGIN:
+    case ActionTypes.LOGIN: {
       return {
         ...state,
         user: {
           username: action.payload?.username,
-          password: action.payload?.password
+          password: action.payload?.password,
         },
       };
+    }
     case ActionTypes.LOGOFF:
       return {
         ...state,
         user: {
-          username: '',
-          password: ''
+          username: "",
+          password: "",
         },
       };
     default:
-      return state
+      return state;
   }
-}
+};
